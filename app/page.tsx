@@ -1,57 +1,33 @@
-import { catalogSdk } from "./lib/art2cart";
-import { CatalogProduct } from "art2cart";
-import { PreviewImage } from "@/app/components";
+import { Separator } from "@/components/ui/separator";
+import { NavBar } from "@/components/NavBar";
 
-async function fetchProducts() {
-  let { data } = await catalogSdk.getByTeam();
-  if (!data) {
-    return [];
-  }
-  return data;
-}
-
-export default async function Home() {
-  const products = await fetchProducts();
+export default async function Page() {
   return (
-    <div>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-white">
-          Customers also purchased
-        </h2>
-
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product: CatalogProduct) => (
-            <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-zinc-800 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <div className="h-16 w-16">
-                  <PreviewImage
-                    image={product.preview_image}
-                    name={`${product.name}`}
-                    bucket={process.env.NEXT_PUBLIC_AWS_TEMPLATES_BUCKET}
-                    height={56}
-                    width={56}
-                  />
-                </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={`${product.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    {product.category}
-                  </p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">
-                  {product.name}
-                </p>
-              </div>
-            </div>
-          ))}
+    <div className="flex flex-col justify-center items-center text-white p-16">
+      <div>
+        <div className="space-y-1">
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            Art2Cart Starter Project
+          </h1>
+          <p className="leading-7 [&:not(:first-child)]:mt-6">
+            A starter project to interact with the Art2Cart Tool Set
+          </p>
         </div>
+        <Separator className="my-4" />
+        <div className="flex h-5 items-center space-x-4 text-sm">
+          <div>NextJS 14.1.1</div>
+          <Separator orientation="vertical" />
+          <div>TypeScript 5</div>
+          <Separator orientation="vertical" />
+          <div>Tailwind CSS 3.4.12</div>
+          <Separator orientation="vertical" />
+          <div>Art2Cart SDK 1.0.2</div>
+        </div>
+        <Separator className="my-2" />
+        <p className="text-xs text-right italic">last update - 9/23/2024</p>
+        {/* <div className="my-4">
+          <NavBar />
+        </div> */}
       </div>
     </div>
   );
