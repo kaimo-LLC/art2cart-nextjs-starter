@@ -1,5 +1,5 @@
 {
-  "name": "art2cart-nextjs-starter",
+  "name": "art2cart-starter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "art2cart": "^1.0.2",
-    "next": "14.2.13",
+    "axios": "^1.7.7",
+    "next": "14.0.1",
     "react": "^18",
-    "react-dom": "^18",
-    "zustand": "^5.0.0-rc.2"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.13",
+    "eslint-config-next": "14.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
