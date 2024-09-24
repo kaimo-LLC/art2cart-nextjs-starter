@@ -16,7 +16,7 @@ import { useDesigns } from "../data-access/useDesigns";
 export function Designs({ designs }: { designs: Design[] }) {
   const { data } = useDesigns({ designs });
   return (
-    <div>
+    <>
       <TitleCard
         title="Designs"
         description="A list of designs in your account"
@@ -42,6 +42,6 @@ export function Designs({ designs }: { designs: Design[] }) {
           </TableBody>
         </Table>
       </div>
-    </div>
+    </>
   );
 }

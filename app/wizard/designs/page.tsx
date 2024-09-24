@@ -9,7 +9,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }): Promise<Design[]> {
-  const { data } = await designSdk.getDesignByTeam(cursor, limit);
+  const { data } = await designSdk.getAllDesigns(cursor, limit);
   if (!data) {
     return [];
   }

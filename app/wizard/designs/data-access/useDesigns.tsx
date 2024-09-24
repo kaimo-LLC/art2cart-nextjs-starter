@@ -6,7 +6,7 @@ import { Design } from "art2cart";
 export function useDesigns({ designs }: { designs: Design[] }) {
   const { data } = useQuery({
     queryKey: ["designs"],
-    queryFn: () => designSdk.getDesignByTeam(0, 10).then((res) => res.data),
+    queryFn: () => designSdk.getAllDesigns(0, 10).then((res) => res.data),
     initialData: designs,
     retry: 0,
     refetchInterval: 1000,
