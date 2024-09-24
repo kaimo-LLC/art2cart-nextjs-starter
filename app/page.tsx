@@ -32,6 +32,9 @@ export default async function Page() {
         <Button variant={"outline"} asChild>
           <Link href="/designs">Designs</Link>
         </Button>
+        <Button variant={"outline"} asChild>
+          <Link href="/wizard/designs">Wizard</Link>
+        </Button>
       </div>
     </div>
   );
