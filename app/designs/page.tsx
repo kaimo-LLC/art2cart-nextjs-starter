@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await designSdk.getDesignByTeam(cursor, limit);
+  const { data } = await designSdk.getAllDesigns(cursor, limit);
   if (!data) {
     return [];
   }
@@ -36,6 +36,7 @@ export default async function Page({
       <TitleCard
         title="Designs"
         description="A list of designs in your account"
+        showHome
       />
       <div className="mt-8">
         <Table>

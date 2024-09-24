@@ -4,7 +4,7 @@ import { Design } from "art2cart";
 type DesignWithArea = Design & { areaName: string };
 
 export interface DesignsSlice {
-  designs: DesignWithArea[];
+  selectedDesigns: DesignWithArea[];
   addDesign: ({
     design,
     areaName,
@@ -23,14 +23,14 @@ export interface DesignsSlice {
 }
 
 export const createDesignsSlice: StateCreator<DesignsSlice> = (set) => ({
-  designs: [],
+  selectedDesigns: [],
   addDesign: ({ design, areaName }) =>
     set((state) => ({
-      designs: [...state.designs, { ...design, areaName: areaName }],
+      selectedDesigns: [...state.selectedDesigns, { ...design, areaName: areaName }],
     })),
   removeDesign: ({ design, areaName }) =>
     set((state) => ({
-      designs: [...state.designs, { ...design, areaName: areaName }],
+      selectedDesigns: [...state.selectedDesigns, { ...design, areaName: areaName }],
     })),
-  clearDesigns: () => set(() => ({ designs: [] })),
+  clearDesigns: () => set(() => ({ selectedDesigns: [] })),
 });

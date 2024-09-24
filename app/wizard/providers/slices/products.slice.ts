@@ -2,7 +2,7 @@ import { StateCreator } from "zustand";
 import { CatalogProduct } from "art2cart";
 
 export interface CatalogProductsSlice {
-  products: CatalogProduct[];
+  selectedProducts: CatalogProduct[];
   addProduct: (product: CatalogProduct) => void;
   removeProduct: (product: CatalogProduct) => void;
 }
@@ -10,9 +10,13 @@ export interface CatalogProductsSlice {
 export const createCatalogProductSlice: StateCreator<CatalogProductsSlice> = (
   set
 ) => ({
-  products: [],
+  selectedProducts: [],
   addProduct: (product) =>
-    set((state) => ({ products: [...state.products, product] })),
+    set((state) => ({
+      selectedProducts: [...state.selectedProducts, product],
+    })),
   removeProduct: (product) =>
-    set((state) => ({ products: [...state.products, product] })),
+    set((state) => ({
+      selectedProducts: [...state.selectedProducts, product],
+    })),
 });

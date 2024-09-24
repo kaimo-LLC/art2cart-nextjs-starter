@@ -1,4 +1,5 @@
-import { catalogSdk } from "@/lib/art2cart";
+// app/posts.jsx
+"use client";
 import {
   Table,
   TableBody,
@@ -8,35 +9,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TitleCard } from "@/components/TitleCard";
 import { CatalogProduct } from "art2cart";
+import { TitleCard } from "@/components/TitleCard";
+import { useCatalogProducts } from "../data-access/useCatalogProducts";
 
-async function fetchData({
-  cursor,
-  limit,
-}: {
-  cursor?: number;
-  limit?: number;
-}) {
-  const { data } = await catalogSdk.getAllCatalogProducts(cursor, limit);
-  if (!data) {
-    return [];
-  }
-  return data;
-}
-
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: { search: string };
-}) {
-  const products = await fetchData({ cursor: 0, limit: 10 });
+export function Products({ products }: { products: CatalogProduct[] }) {
+  const { productOptions, addSelectedProduct, removeSelectedProduct } =
+    useCatalogProducts({
+      products,
+    });
   return (
-    <div className="mx-auto max-w-7xl p-4 lg:p-16">
+    <>
       <TitleCard
         title="Catalog Products"
-        description=" A list of catalog products in your account"
-        showHome
+        description="Select products for your order"
       />
       <div className="mt-8">
         <Table>
@@ -50,7 +36,7 @@ export default async function Page({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product: CatalogProduct) => (
+            {productOptions.map((product: CatalogProduct) => (
               <TableRow key={product.id}>
                 <TableCell>{product.code}</TableCell>
                 <TableCell>{product.category}</TableCell>
@@ -61,6 +47,6 @@ export default async function Page({
           </TableBody>
         </Table>
       </div>
-    </div>
+    </>
   );
 }

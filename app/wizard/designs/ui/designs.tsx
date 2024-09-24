@@ -17,10 +17,7 @@ export function Designs({ designs }: { designs: Design[] }) {
   const { data } = useDesigns({ designs });
   return (
     <>
-      <TitleCard
-        title="Designs"
-        description="A list of designs in your account"
-      />
+      <TitleCard title="Designs" description="Select designs for your order" />
       <div className="mt-8">
         <Table>
           <TableCaption>A list of designs</TableCaption>
