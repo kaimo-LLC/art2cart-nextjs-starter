@@ -1,6 +1,9 @@
 import { catalogSdk } from "@/lib/art2cart";
 import { CatalogProduct } from "art2cart";
 import { Products } from "./ui/products";
+import { TitleCard } from "@/components/TitleCard";
+import { WizardNav } from "../ui/WizardNav";
+import { ReviewPanel } from "../ui/ReviewPanel";
 
 async function fetchData({
   cursor,
@@ -20,7 +23,18 @@ export default async function Page() {
   const products = await fetchData({ cursor: 0, limit: 10 });
   return (
     <div className="mx-auto max-w-7xl p-4 lg:p-16">
-      <Products products={products} />
+      <TitleCard
+        showHome
+        title="Catalog Products"
+        description="1. Select products for your order"
+      />
+      <WizardNav current={1} />
+      <div className="mt-8">
+        <Products products={products} />
+      </div>
+      <div className="flex justify-end mt-8">
+        <ReviewPanel />
+      </div>
     </div>
   );
 }
