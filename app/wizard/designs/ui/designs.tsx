@@ -10,24 +10,28 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Design } from "art2cart";
-import { TitleCard } from "@/components/TitleCard";
 import { useDesigns } from "../data-access/useDesigns";
 
 export function Designs({ designs }: { designs: Design[] }) {
-  const { data } = useDesigns({ designs });
+  const { designOptions, addSelectedDesign, removeSelectedDesign } = useDesigns(
+    { designs }
+  );
+  console.log(designOptions);
   return (
     <Table>
       <TableCaption>A list of designs</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead>Id</TableHead>
           <TableHead>Title</TableHead>
           <TableHead>Original File Name</TableHead>
           <TableHead>Tags</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((design: Design) => (
+        {designOptions.map((design: Design) => (
           <TableRow key={design.id}>
+            <TableCell>{design.id}</TableCell>
             <TableCell>{design.title}</TableCell>
             <TableCell>{design.original_file_name}</TableCell>
             <TableCell>{design.tags}</TableCell>

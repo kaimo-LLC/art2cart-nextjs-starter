@@ -5,14 +5,14 @@ type DesignWithArea = Design & { areaName: string };
 
 export interface DesignsSlice {
   selectedDesigns: DesignWithArea[];
-  addDesign: ({
+  addSelectedDesign: ({
     design,
     areaName,
   }: {
     design: Design;
     areaName: string;
   }) => void;
-  removeDesign: ({
+  removeSelectedDesign: ({
     design,
     areaName,
   }: {
@@ -24,13 +24,19 @@ export interface DesignsSlice {
 
 export const createDesignsSlice: StateCreator<DesignsSlice> = (set) => ({
   selectedDesigns: [],
-  addDesign: ({ design, areaName }) =>
+  addSelectedDesign: ({ design, areaName }) =>
     set((state) => ({
-      selectedDesigns: [...state.selectedDesigns, { ...design, areaName: areaName }],
+      selectedDesigns: [
+        ...state.selectedDesigns,
+        { ...design, areaName: areaName },
+      ],
     })),
-  removeDesign: ({ design, areaName }) =>
+  removeSelectedDesign: ({ design, areaName }) =>
     set((state) => ({
-      selectedDesigns: [...state.selectedDesigns, { ...design, areaName: areaName }],
+      selectedDesigns: [
+        ...state.selectedDesigns,
+        { ...design, areaName: areaName },
+      ],
     })),
   clearDesigns: () => set(() => ({ selectedDesigns: [] })),
 });

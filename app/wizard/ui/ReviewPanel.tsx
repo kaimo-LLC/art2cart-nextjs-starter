@@ -25,7 +25,9 @@ export function ReviewPanel() {
           <SheetClose asChild>
             <Button type="submit">Submit</Button>
           </SheetClose>
-          <Button type="submit"></Button>
+          <Button variant={"secondary"} type="submit">
+            Clear
+          </Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>

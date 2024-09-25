@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { TitleCard } from "@/components/TitleCard";
 import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
+import { Button } from "@/components/ui/button";
 
 export default async function Page() {
   return (
@@ -8,12 +10,19 @@ export default async function Page() {
       <TitleCard
         showHome
         title="Channels"
-        description="5. Select channels to publish to"
+        description="Select channels to publish to"
       />
       <WizardNav current={5} />
       <div className="mt-8"></div>
-      <div className="flex justify-end mt-8">
-        <ReviewPanel />
+      <div className="flex justify-between my-8">
+        <div>
+          <Button variant={"secondary"}>
+            <Link href="/wizard/listing">Previous</Link>
+          </Button>
+        </div>
+        <div>
+          <ReviewPanel />
+        </div>
       </div>
     </div>
   );

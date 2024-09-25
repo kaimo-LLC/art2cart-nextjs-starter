@@ -1,9 +1,11 @@
+import Link from "next/link";
 import { catalogSdk } from "@/lib/art2cart";
 import { CatalogProduct } from "art2cart";
 import { Products } from "./ui/products";
 import { TitleCard } from "@/components/TitleCard";
 import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
+import { Button } from "@/components/ui/button";
 
 async function fetchData({
   cursor,
@@ -26,14 +28,24 @@ export default async function Page() {
       <TitleCard
         showHome
         title="Catalog Products"
-        description="1. Select products for your order"
+        description="Select products for your order"
       />
       <WizardNav current={1} />
       <div className="mt-8">
         <Products products={products} />
       </div>
-      <div className="flex justify-end mt-8">
-        <ReviewPanel />
+      <div className="flex justify-between my-8">
+        <div>
+          <Button variant={"secondary"}>
+            <Link href="/wizard">Previous</Link>
+          </Button>
+        </div>
+        <div className="space-x-4">
+          <Button>
+            <Link href="/wizard/designs">Next</Link>
+          </Button>
+          <ReviewPanel />
+        </div>
       </div>
     </div>
   );

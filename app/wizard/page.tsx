@@ -12,7 +12,7 @@ export default async function Page() {
         description="Step by step create a new job"
       />
       <WizardNav current={0} />
-      <div className="flex justify-center p-16">
+      <div className="flex justify-end my-8">
         <Button>
           <Link href="/wizard/products">Let's Go!</Link>
         </Button>

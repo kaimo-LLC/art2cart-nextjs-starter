@@ -1,70 +1,65 @@
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-const pages = [
-  {
-    id: 0,
-    label: "Start",
-    href: "/wizard",
-  },
-  {
-    id: 1,
-    label: "Products",
-    href: "/wizard/products",
-  },
-  {
-    id: 2,
-    label: "Designs",
-    href: "/wizard/designs",
-  },
-  {
-    id: 3,
-    label: "Personalization",
-    href: "/wizard/personalization",
-  },
-  {
-    id: 4,
-    label: "Listing",
-    href: "/wizard/listing",
-  },
-  {
-    id: 5,
-    label: "Channels",
-    href: "/wizard/channels",
-  },
-];
 
 export function WizardNav({ current }: { current: number }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {pages.map(function (page) {
-          return (
-            <>
-              <BreadcrumbItem key={page.id}>
-                {current === page.id ? (
-                  <BreadcrumbPage>{page.label}</BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink href={page.href}>{page.label}</BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-              {page.id !== pages.length - 1 && <BreadcrumbSeparator />}
-            </>
-          );
-        })}
+        <BreadcrumbItem>
+          {current === 0 ? (
+            <BreadcrumbPage>Start</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard"}>Start</BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          {current === 1 ? (
+            <BreadcrumbPage>Products</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard/products"}>Products</BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          {current === 2 ? (
+            <BreadcrumbPage>Designs</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard/designs"}>Designs</BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          {current === 3 ? (
+            <BreadcrumbPage>Personalization</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard/personalization"}>
+              Personalization
+            </BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          {current === 4 ? (
+            <BreadcrumbPage>Listing</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard/listing"}>Listing</BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          {current === 5 ? (
+            <BreadcrumbPage>Channels</BreadcrumbPage>
+          ) : (
+            <BreadcrumbLink href={"/wizard/channels"}>Channels</BreadcrumbLink>
+          )}
+        </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
   );

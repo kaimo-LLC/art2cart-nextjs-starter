@@ -43,6 +43,7 @@ export default async function Page({
           <TableCaption>A list of designs</TableCaption>
           <TableHeader>
             <TableRow>
+              <TableHead>Id</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Original File Name</TableHead>
               <TableHead>Tags</TableHead>
@@ -51,6 +52,7 @@ export default async function Page({
           <TableBody>
             {designs.map((design: Design) => (
               <TableRow key={design.id}>
+                <TableCell>{design.id}</TableCell>
                 <TableCell>{design.title}</TableCell>
                 <TableCell>{design.original_file_name}</TableCell>
                 <TableCell>{design.tags}</TableCell>
