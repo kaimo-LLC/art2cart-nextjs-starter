@@ -9,7 +9,7 @@ export default async function Page() {
       <TitleCard
         showHome
         title="Wizard"
-        description="Step by step create a new job"
+        description="Create a new job, step by step"
       />
       <WizardNav current={0} />
       <div className="flex justify-end my-8">

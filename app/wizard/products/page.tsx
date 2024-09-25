@@ -29,14 +29,14 @@ export default async function Page() {
       <TitleCard
         showHome
         title="Wizard"
-        description="Step by step create a new job"
+        description="Create a new job, step by step"
       />
       <WizardNav current={1} />
       <div className="mt-8">
         <BodyCard
-          title="Designs"
-          description="Select designs"
-          footer="design selection"
+          title="Catalog Products"
+          description="Select catalog products"
+          footer="product selection"
         >
           <Products products={products} />
         </BodyCard>

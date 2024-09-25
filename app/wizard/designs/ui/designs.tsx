@@ -16,7 +16,6 @@ export function Designs({ designs }: { designs: Design[] }) {
   const { designOptions, addSelectedDesign, removeSelectedDesign } = useDesigns(
     { designs }
   );
-  console.log(designOptions);
   return (
     <Table>
       <TableCaption>A list of designs</TableCaption>
