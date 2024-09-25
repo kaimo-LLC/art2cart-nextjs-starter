@@ -6,6 +6,7 @@ import { TitleCard } from "@/components/TitleCard";
 import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
 import { Button } from "@/components/ui/button";
+import { BodyCard } from "@/components/BodyCard";
 
 async function fetchData({
   cursor,
@@ -27,12 +28,18 @@ export default async function Page() {
     <div className="mx-auto max-w-7xl p-4 lg:p-16">
       <TitleCard
         showHome
-        title="Catalog Products"
-        description="Select products for your order"
+        title="Wizard"
+        description="Step by step create a new job"
       />
       <WizardNav current={1} />
       <div className="mt-8">
-        <Products products={products} />
+        <BodyCard
+          title="Designs"
+          description="Select designs"
+          footer="design selection"
+        >
+          <Products products={products} />
+        </BodyCard>
       </div>
       <div className="flex justify-between my-8">
         <div>
