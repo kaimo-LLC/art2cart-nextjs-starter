@@ -1,7 +1,7 @@
 import { TitleCard } from "@/components/TitleCard";
-import { Button } from "@/components/ui/button";
-import { WizardNav } from "./ui/WizardNav";
-import Link from "next/link";
+import { BodyCard } from "@/components/BodyCard";
+
+import { FeatureSelector } from "./ui/FeatureSelector";
 
 export default async function Page() {
   return (
@@ -11,11 +11,14 @@ export default async function Page() {
         title="Wizard"
         description="Create a new job, step by step"
       />
-      <WizardNav current={0} />
-      <div className="flex justify-end my-8">
-        <Button>
-          <Link href="/wizard/products">Let's Go!</Link>
-        </Button>
+      <div className="mt-8">
+        <BodyCard
+          title="Configure"
+          description="Select which tools you would like to use"
+          footer="tool selector"
+        >
+          <FeatureSelector />
+        </BodyCard>
       </div>
     </div>
   );
