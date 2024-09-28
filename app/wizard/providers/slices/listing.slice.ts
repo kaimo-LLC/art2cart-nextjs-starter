@@ -1,27 +1,21 @@
 import { StateCreator } from "zustand";
 
+export type Listing = {
+  [key: string]: string;
+};
+
 export interface ListingSlice {
-  sku: string;
-  handle: string;
-  title: string;
-  description: string;
-  tags: string;
-  setSku: (sku: string) => void;
-  setHandle: (handle: string) => void;
-  setTitle: (title: string) => void;
-  setDescription: (description: string) => void;
-  setTags: (tags: string) => void;
+  listing: Listing;
+  setListing: (listing: Listing) => void;
 }
 
 export const createListingSlice: StateCreator<ListingSlice> = (set) => ({
-  sku: "",
-  handle: "",
-  title: "",
-  description: "",
-  tags: "",
-  setSku: (sku) => set(() => ({ sku: sku })),
-  setHandle: (handle) => set(() => ({ handle: handle })),
-  setTitle: (title) => set(() => ({ title: title })),
-  setDescription: (description) => set(() => ({ description: description })),
-  setTags: (tags) => set(() => ({ tags: tags })),
+  listing: {
+    sku: "",
+    handle: "",
+    title: "",
+    description: "",
+    tags: "",
+  },
+  setListing: (listing) => set(() => ({ listing: listing })),
 });

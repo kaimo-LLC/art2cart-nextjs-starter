@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import {
   createListingSlice,
   ListingSlice,
@@ -18,10 +19,15 @@ export type WizardStore = ListingSlice &
   StoresSlice &
   ConfigSlice;
 
-export const useWizardStore = create<WizardStore>()((...a) => ({
-  ...createListingSlice(...a),
-  ...createCatalogProductSlice(...a),
-  ...createDesignsSlice(...a),
-  ...createStoreSlice(...a),
-  ...createConfigSlice(...a),
-}));
+export const useWizardStore = create<WizardStore>()(
+  persist(
+    (...a) => ({
+      ...createListingSlice(...a),
+      ...createCatalogProductSlice(...a),
+      ...createDesignsSlice(...a),
+      ...createStoreSlice(...a),
+      ...createConfigSlice(...a),
+    }),
+    { name: "wizard-store" }
+  )
+);

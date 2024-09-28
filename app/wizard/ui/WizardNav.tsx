@@ -1,3 +1,6 @@
+"use client";
+import { Fragment } from "react";
+import { Slash } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,60 +9,52 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useWizardStore } from "../providers/useWizardStore";
 
-export function WizardNav({ current }: { current: number }) {
+export function WizardNav({ current }: { current: string }) {
+  const { config } = useWizardStore();
+
+  const keys = Object.entries(config)
+    .filter(([_, value]) => value === true)
+    .map(([key, _]) => key);
+
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          {current === 0 ? (
+          {current === "start" ? (
             <BreadcrumbPage>Start</BreadcrumbPage>
           ) : (
             <BreadcrumbLink href={"/wizard"}>Start</BreadcrumbLink>
           )}
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {current === 1 ? (
-            <BreadcrumbPage>Products</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard/products"}>Products</BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {current === 2 ? (
-            <BreadcrumbPage>Designs</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard/designs"}>Designs</BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {current === 3 ? (
-            <BreadcrumbPage>Personalization</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard/personalization"}>
-              Personalization
-            </BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {current === 4 ? (
-            <BreadcrumbPage>Listing</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard/listing"}>Listing</BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          {current === 5 ? (
-            <BreadcrumbPage>Channels</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard/channels"}>Channels</BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
+        {keys.length > 0 && (
+          <BreadcrumbSeparator>
+            <Slash />
+          </BreadcrumbSeparator>
+        )}
+        {keys.map(function (page, index) {
+          return (
+            <Fragment key={page}>
+              <BreadcrumbItem>
+                {current === page ? (
+                  <BreadcrumbPage>
+                    {page.charAt(0).toUpperCase() + page.slice(1)}
+                  </BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink href={`/wizard/${page}`}>
+                    {page.charAt(0).toUpperCase() + page.slice(1)}
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+              {index < keys.length - 1 && (
+                <BreadcrumbSeparator>
+                  <Slash />
+                </BreadcrumbSeparator>
+              )}
+            </Fragment>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );

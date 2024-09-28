@@ -18,11 +18,10 @@ import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import { useWizardStore } from "../providers/useWizardStore";
 
 const FormSchema = z.object({
-  product_catalog: z.boolean().default(true),
-  design_library: z.boolean().default(true),
-  design_placement: z.boolean().default(true),
+  products: z.boolean().default(true),
+  designs: z.boolean().default(true),
   personalization: z.boolean().default(true),
-  listing_details: z.boolean().default(true),
+  listing: z.boolean().default(true),
   channels: z.boolean().default(true),
 });
 
@@ -32,11 +31,10 @@ export function FeatureSelector() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      product_catalog: true,
-      design_library: true,
-      design_placement: true,
+      products: true,
+      designs: true,
       personalization: true,
-      listing_details: true,
+      listing: true,
       channels: true,
     },
   });
@@ -62,7 +60,7 @@ export function FeatureSelector() {
           <div className="space-y-4">
             <FormField
               control={form.control}
-              name="product_catalog"
+              name="products"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
@@ -83,7 +81,7 @@ export function FeatureSelector() {
             />
             <FormField
               control={form.control}
-              name="design_library"
+              name="designs"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">
@@ -91,30 +89,6 @@ export function FeatureSelector() {
                     <FormDescription>
                       Select designs from your library. If turned off, I will
                       choose from some preselected defaults.
-                    </FormDescription>
-                  </div>
-                  <FormControl>
-                    <Switch
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="design_placement"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-                  <div className="space-y-0.5">
-                    <FormLabel className="text-base">
-                      Design Placement
-                    </FormLabel>
-                    <FormDescription>
-                      Place your selected designs in design areas reflecting
-                      your chosen products. If turned off, I will choose from
-                      some preselected defaults.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -148,7 +122,7 @@ export function FeatureSelector() {
             />
             <FormField
               control={form.control}
-              name="listing_details"
+              name="listing"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                   <div className="space-y-0.5">

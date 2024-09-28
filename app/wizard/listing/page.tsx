@@ -4,6 +4,7 @@ import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
 import { Button } from "@/components/ui/button";
 import { BodyCard } from "@/components/BodyCard";
+import { ListingDetails } from "./ui/ListingDetails";
 
 export default async function Page() {
   return (
@@ -13,28 +14,18 @@ export default async function Page() {
         title="Wizard"
         description="Create a new job, step by step"
       />
-      <WizardNav current={4} />
+      <WizardNav current={"listing"} />
       <div className="mt-8">
         <BodyCard
           title="Listing"
           description="Set listing details"
           footer="listing configuration"
         >
-          <div></div>
+          <ListingDetails />
         </BodyCard>
       </div>
-      <div className="flex justify-between my-8">
-        <div>
-          <Button variant={"secondary"}>
-            <Link href="/wizard/personalization">Previous</Link>
-          </Button>
-        </div>
-        <div className="space-x-4">
-          <Button>
-            <Link href="/wizard/channels">Next</Link>
-          </Button>
-          <ReviewPanel />
-        </div>
+      <div className="flex justify-end my-8">
+        <ReviewPanel />
       </div>
     </div>
   );

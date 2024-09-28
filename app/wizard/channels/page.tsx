@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { TitleCard } from "@/components/TitleCard";
 import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
-import { Button } from "@/components/ui/button";
 import { BodyCard } from "@/components/BodyCard";
 
 export default async function Page() {
@@ -13,7 +11,7 @@ export default async function Page() {
         title="Wizard"
         description="Create a new job, step by step"
       />
-      <WizardNav current={5} />
+      <WizardNav current={"channels"} />
       <div className="mt-8">
         <BodyCard
           title="Channels"
@@ -23,15 +21,8 @@ export default async function Page() {
           <div></div>
         </BodyCard>
       </div>
-      <div className="flex justify-between my-8">
-        <div>
-          <Button variant={"secondary"}>
-            <Link href="/wizard/listing">Previous</Link>
-          </Button>
-        </div>
-        <div>
-          <ReviewPanel />
-        </div>
+      <div className="flex justify-end my-8">
+        <ReviewPanel />
       </div>
     </div>
   );

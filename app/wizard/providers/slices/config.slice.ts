@@ -1,13 +1,8 @@
 import { StateCreator } from "zustand";
 
-interface Config {
-  product_catalog: boolean;
-  design_library: boolean;
-  design_placement: boolean;
-  personalization: boolean;
-  listing_details: boolean;
-  channels: boolean;
-}
+export type Config = {
+  [key: string]: boolean;
+};
 
 export interface ConfigSlice {
   config: Config;
@@ -16,11 +11,10 @@ export interface ConfigSlice {
 
 export const createConfigSlice: StateCreator<ConfigSlice> = (set) => ({
   config: {
-    product_catalog: true,
-    design_library: true,
-    design_placement: true,
+    products: true,
+    designs: true,
     personalization: true,
-    listing_details: true,
+    listing: true,
     channels: true,
   },
   setConfig: (config) => set(() => ({ config: config })),

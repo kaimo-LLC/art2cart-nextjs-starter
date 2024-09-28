@@ -14,7 +14,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useWizardStore } from "../providers/useWizardStore";
 
 export function ReviewPanel() {
-  const { selectedDesigns } = useWizardStore();
+  const { listing, selectedDesigns, selectedProducts } = useWizardStore();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -28,20 +28,38 @@ export function ReviewPanel() {
         <div className="my-8">
           <ScrollArea className="h-100 w-[350px] rounded-md border p-4">
             <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <p className="col-span-3">Catalog Products</p>
+              <div className="grid grid-cols-1 items-center gap-4">
+                <p>Catalog Products</p>
+                <pre className="w-full rounded-md bg-slate-950 p-4">
+                  <code className="text-white">
+                    {JSON.stringify(selectedProducts, null, 2)}
+                  </code>
+                </pre>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <p className="col-span-3">Designs</p>
+              <div className="grid grid-cols-1 items-center gap-4">
+                <p>Designs</p>
+                <pre className="w-full rounded-md bg-slate-950 p-4">
+                  <code className="text-white">
+                    {JSON.stringify(selectedDesigns, null, 2)}
+                  </code>
+                </pre>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <p className="col-span-3">Personalizations</p>
+              <div className="grid grid-cols-1 items-center gap-4">
+                <p>Personalizations</p>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <p className="col-span-3">Listing Details</p>
+              <div className="grid grid-cols-1 items-center gap-4">
+                <p>Listing Details</p>
+                <pre className="w-full rounded-md bg-slate-950 p-4">
+                  <code className="text-white">
+                    {JSON.stringify(listing, null, 2)}
+                  </code>
+                </pre>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <p className="col-span-3">Channels</p>
+              <div className="grid grid-cols-1 items-center gap-4">
+                <p>Channels</p>
+                <pre className="w-full rounded-md bg-slate-950 p-4">
+                  <code className="text-white"></code>
+                </pre>
               </div>
             </div>
           </ScrollArea>

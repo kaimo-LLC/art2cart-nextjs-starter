@@ -31,7 +31,7 @@ export default async function Page() {
         title="Wizard"
         description="Create a new job, step by step"
       />
-      <WizardNav current={2} />
+      <WizardNav current={"designs"} />
       <div className="mt-8">
         <BodyCard
           title="Designs"
@@ -41,18 +41,8 @@ export default async function Page() {
           <Designs designs={designs} />
         </BodyCard>
       </div>
-      <div className="flex justify-between my-8">
-        <div>
-          <Button variant={"secondary"}>
-            <Link href="/wizard/products">Previous</Link>
-          </Button>
-        </div>
-        <div className="space-x-4">
-          <Button>
-            <Link href="/wizard/personalization">Next</Link>
-          </Button>
-          <ReviewPanel />
-        </div>
+      <div className="flex justify-end my-8">
+        <ReviewPanel />
       </div>
     </div>
   );
