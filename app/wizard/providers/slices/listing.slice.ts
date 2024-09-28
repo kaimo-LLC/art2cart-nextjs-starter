@@ -7,6 +7,7 @@ export type Listing = {
 export interface ListingSlice {
   listing: Listing;
   setListing: (listing: Listing) => void;
+  clearListing: () => void;
 }
 
 export const createListingSlice: StateCreator<ListingSlice> = (set) => ({
@@ -18,4 +19,14 @@ export const createListingSlice: StateCreator<ListingSlice> = (set) => ({
     tags: "",
   },
   setListing: (listing) => set(() => ({ listing: listing })),
+  clearListing: () =>
+    set(() => ({
+      listing: {
+        sku: "",
+        handle: "",
+        title: "",
+        description: "",
+        tags: "",
+      },
+    })),
 });

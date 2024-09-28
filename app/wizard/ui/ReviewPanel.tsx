@@ -14,7 +14,19 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useWizardStore } from "../providers/useWizardStore";
 
 export function ReviewPanel() {
-  const { listing, selectedDesigns, selectedProducts } = useWizardStore();
+  const {
+    listing,
+    selectedDesigns,
+    selectedProducts,
+    resetConfig,
+    clearListing,
+  } = useWizardStore();
+
+  function clearStore() {
+    resetConfig();
+    clearListing();
+  }
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -30,18 +42,14 @@ export function ReviewPanel() {
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Catalog Products</p>
-                <pre className="w-full rounded-md bg-slate-950 p-4">
-                  <code className="text-white">
-                    {JSON.stringify(selectedProducts, null, 2)}
-                  </code>
+                <pre className="rounded-lg border bg-card text-card-foreground p-4">
+                  <code>{JSON.stringify(selectedProducts, null, 2)}</code>
                 </pre>
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Designs</p>
-                <pre className="w-full rounded-md bg-slate-950 p-4">
-                  <code className="text-white">
-                    {JSON.stringify(selectedDesigns, null, 2)}
-                  </code>
+                <pre className="rounded-lg border bg-card text-card-foreground p-4">
+                  <code>{JSON.stringify(selectedDesigns, null, 2)}</code>
                 </pre>
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
@@ -49,16 +57,14 @@ export function ReviewPanel() {
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Listing Details</p>
-                <pre className="w-full rounded-md bg-slate-950 p-4">
-                  <code className="text-white">
-                    {JSON.stringify(listing, null, 2)}
-                  </code>
+                <pre className="rounded-lg border bg-card text-card-foreground p-4">
+                  <code>{JSON.stringify(listing, null, 2)}</code>
                 </pre>
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Channels</p>
-                <pre className="w-full rounded-md bg-slate-950 p-4">
-                  <code className="text-white"></code>
+                <pre className="rounded-lg border bg-card text-card-foreground p-4">
+                  <code></code>
                 </pre>
               </div>
             </div>
@@ -68,7 +74,11 @@ export function ReviewPanel() {
           <SheetClose asChild>
             <Button type="submit">Submit</Button>
           </SheetClose>
-          <Button variant={"secondary"} type="submit">
+          <Button
+            onClick={() => clearStore()}
+            variant={"secondary"}
+            type="submit"
+          >
             Clear
           </Button>
         </SheetFooter>

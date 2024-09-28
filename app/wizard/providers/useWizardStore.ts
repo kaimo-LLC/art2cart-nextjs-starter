@@ -7,8 +7,8 @@ import {
   CatalogProductsSlice,
   createDesignsSlice,
   DesignsSlice,
-  createStoreSlice,
-  StoresSlice,
+  createChannelSlice,
+  ChannelSlice,
   ConfigSlice,
   createConfigSlice,
 } from "./slices";
@@ -16,7 +16,7 @@ import {
 export type WizardStore = ListingSlice &
   CatalogProductsSlice &
   DesignsSlice &
-  StoresSlice &
+  ChannelSlice &
   ConfigSlice;
 
 export const useWizardStore = create<WizardStore>()(
@@ -25,7 +25,7 @@ export const useWizardStore = create<WizardStore>()(
       ...createListingSlice(...a),
       ...createCatalogProductSlice(...a),
       ...createDesignsSlice(...a),
-      ...createStoreSlice(...a),
+      ...createChannelSlice(...a),
       ...createConfigSlice(...a),
     }),
     { name: "wizard-store" }

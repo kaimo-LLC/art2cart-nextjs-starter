@@ -21,18 +21,6 @@ export function WizardNav({ current }: { current: string }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem>
-          {current === "start" ? (
-            <BreadcrumbPage>Start</BreadcrumbPage>
-          ) : (
-            <BreadcrumbLink href={"/wizard"}>Start</BreadcrumbLink>
-          )}
-        </BreadcrumbItem>
-        {keys.length > 0 && (
-          <BreadcrumbSeparator>
-            <Slash />
-          </BreadcrumbSeparator>
-        )}
         {keys.map(function (page, index) {
           return (
             <Fragment key={page}>

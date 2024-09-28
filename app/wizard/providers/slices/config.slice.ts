@@ -7,6 +7,7 @@ export type Config = {
 export interface ConfigSlice {
   config: Config;
   setConfig: (config: Config) => void;
+  resetConfig: () => void;
 }
 
 export const createConfigSlice: StateCreator<ConfigSlice> = (set) => ({
@@ -18,4 +19,14 @@ export const createConfigSlice: StateCreator<ConfigSlice> = (set) => ({
     channels: true,
   },
   setConfig: (config) => set(() => ({ config: config })),
+  resetConfig: () =>
+    set(() => ({
+      config: {
+        products: true,
+        designs: true,
+        personalization: true,
+        listing: true,
+        channels: true,
+      },
+    })),
 });
