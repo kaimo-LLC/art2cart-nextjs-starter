@@ -32,11 +32,7 @@ export default async function Page() {
       />
       <WizardNav current={"channels"} />
       <div className="mt-8">
-        <BodyCard
-          title="Channels"
-          description="Select channels"
-          footer="channel selection"
-        >
+        <BodyCard title="Channels" description="Select channels">
           <Channels channels={channels} />
         </BodyCard>
       </div>

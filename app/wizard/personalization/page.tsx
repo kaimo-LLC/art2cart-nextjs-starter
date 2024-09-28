@@ -18,7 +18,6 @@ export default async function Page() {
         <BodyCard
           title="Personalization"
           description="Select personalization data"
-          footer="personalization selection"
         >
           <div></div>
         </BodyCard>

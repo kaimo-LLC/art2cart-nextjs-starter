@@ -36,7 +36,6 @@ export default async function Page() {
         <BodyCard
           title="Catalog Products"
           description="Select catalog products"
-          footer="product selection"
         >
           <Products products={products} />
         </BodyCard>

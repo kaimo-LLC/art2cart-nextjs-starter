@@ -15,7 +15,6 @@ export default async function Page() {
         <BodyCard
           title="Configure"
           description="Select which tools you would like to use"
-          footer="tool selector"
         >
           <FeatureSelector />
         </BodyCard>

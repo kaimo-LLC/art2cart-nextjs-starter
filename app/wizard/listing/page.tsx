@@ -16,11 +16,7 @@ export default async function Page() {
       />
       <WizardNav current={"listing"} />
       <div className="mt-8">
-        <BodyCard
-          title="Listing"
-          description="Set listing details"
-          footer="listing configuration"
-        >
+        <BodyCard title="Listing" description="Set listing details">
           <ListingDetails />
         </BodyCard>
       </div>
