@@ -26,35 +26,35 @@ export default async function Page() {
         <div>Art2Cart SDK 1.0.2</div>
       </div>
       <p className="text-xs text-right italic">last update - 9/23/2024</p>
-      <div className="flex justify-center">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-          <BodyCard title="Data" description="Setup data">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button variant={"outline"} asChild>
-                <Link href="/catalog">Catalog</Link>
-              </Button>
-              <Button variant={"outline"} asChild>
-                <Link href="/designs">Designs</Link>
-              </Button>
-              <Button variant={"outline"} asChild>
-                <Link href="/channels">Channels</Link>
-              </Button>
-            </div>
-          </BodyCard>
-          <BodyCard title="Build" description="Build your listing">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button variant={"outline"} asChild>
-                <Link href="/wizard">Wizard</Link>
-              </Button>
-            </div>
-          </BodyCard>
-          <BodyCard title="Sell" description="Review output">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button variant={"outline"} asChild>
-                <Link href="/listings">Listings</Link>
-              </Button>
-            </div>
-          </BodyCard>
+      <div className="flex justify-center mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <Button variant={"outline"} asChild>
+            <Link href="/catalog">Catalog</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/designs">Designs</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/personalization">Personalization</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/printers">Printers</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/imposition">Imposition</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/channels">Channels</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/wizard">Wizard</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/jobs">Jobs</Link>
+          </Button>
+          <Button variant={"outline"} asChild>
+            <Link href="/listings">Listings</Link>
+          </Button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { catalogSdk } from "@/lib/art2cart";
+import { personalizationSdk } from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TitleCard } from "@/components/TitleCard";
-import { CatalogProduct } from "art2cart";
+import { PersonalizationCategory, Printer } from "art2cart";
 
 async function fetchData({
   cursor,
@@ -18,7 +18,10 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await catalogSdk.getAllCatalogProducts(cursor, limit);
+  const { data } = await personalizationSdk.getAllPersonalizationCategories(
+    cursor,
+    limit
+  );
   if (!data) {
     return [];
   }
@@ -30,33 +33,27 @@ export default async function Page({
 }: {
   searchParams?: { search: string };
 }) {
-  const products = await fetchData({ cursor: 0, limit: 10 });
+  const categories = await fetchData({ cursor: 0, limit: 10 });
   return (
     <div className="mx-auto max-w-7xl p-4 lg:p-16">
       <TitleCard
-        title="Catalog Products"
-        description=" A list of catalog products in your account"
+        title="Personalization Categories"
+        description=" A list of categories in your account"
         showHome
       />
       <div className="mt-8">
         <Table>
-          <TableCaption>A list of catalog products</TableCaption>
+          <TableCaption>A list of personalization categories</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Id</TableHead>
-              <TableHead>Code</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Model</TableHead>
               <TableHead>Name</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product: CatalogProduct) => (
+            {categories.map((product: PersonalizationCategory) => (
               <TableRow key={product.id}>
                 <TableCell>{product.id}</TableCell>
-                <TableCell>{product.code}</TableCell>
-                <TableCell>{product.category}</TableCell>
-                <TableCell>{product.model}</TableCell>
                 <TableCell>{product.name}</TableCell>
               </TableRow>
             ))}
