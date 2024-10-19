@@ -1,4 +1,4 @@
-import { impositionSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await impositionSdk.getAllImpositionTemplates(cursor, limit);
+  const data = await api.getImposition(cursor, limit);
   if (!data) {
     return [];
   }

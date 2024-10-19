@@ -1,11 +1,9 @@
-import Link from "next/link";
-import { designSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import { Design } from "art2cart";
 import { Designs } from "./ui/designs";
 import { TitleCard } from "@/components/TitleCard";
 import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
-import { Button } from "@/components/ui/button";
 import { BodyCard } from "@/components/BodyCard";
 
 async function fetchData({
@@ -15,7 +13,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }): Promise<Design[]> {
-  const { data } = await designSdk.getAllDesigns(cursor, limit);
+  const data = await api.getDesigns(cursor, limit);
   if (!data) {
     return [];
   }

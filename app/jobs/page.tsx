@@ -1,4 +1,4 @@
-import { jobSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await jobSdk.getAllJobs(cursor, limit);
+  const data = await api.getJobs(cursor, limit);
   if (!data) {
     return [];
   }

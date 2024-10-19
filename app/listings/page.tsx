@@ -1,4 +1,4 @@
-import { listingSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await listingSdk.getAllListings(cursor, limit);
+  const data = await api.getListing(cursor, limit);
   if (!data) {
     return [];
   }

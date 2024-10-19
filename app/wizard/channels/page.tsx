@@ -1,4 +1,4 @@
-import { channelSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import { Channel } from "art2cart";
 import { Channels } from "./ui/channels";
 import { TitleCard } from "@/components/TitleCard";
@@ -13,7 +13,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }): Promise<Channel[]> {
-  const { data } = await channelSdk.getAllChannels(cursor, limit);
+  const data = await api.getChannels(cursor, limit);
   if (!data) {
     return [];
   }

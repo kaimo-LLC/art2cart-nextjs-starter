@@ -1,26 +1,191 @@
-import {
-  Configuration,
-  CatalogProductsApi,
-  DesignsApi,
-  ChannelsApi,
-  ListingsApi,
-  JobsApi,
-  PrintersApi,
-  PrintFilesApi,
-  PreviewImagesApi,
-  PersonalizationApi,
-  ImpositionApi,
-} from "art2cart";
+import axios from "axios";
 
-const config = new Configuration({ apiKey: process.env.ART2CART });
+class Art2CartApi {
+  api = axios.create({
+    baseURL: "https://api.art2cart.com",
+    timeout: 10000,
+    headers: {
+      Authorization: process.env.NEXT_PUBLIC_ART2CART,
+    },
+  });
 
-export const jobSdk = new JobsApi(config);
-export const catalogSdk = new CatalogProductsApi(config);
-export const channelSdk = new ChannelsApi(config);
-export const designSdk = new DesignsApi(config);
-export const listingSdk = new ListingsApi(config);
-export const printerSdk = new PrintersApi(config);
-export const printFileSdk = new PrintFilesApi(config);
-export const previewImageSdk = new PreviewImagesApi(config);
-export const personalizationSdk = new PersonalizationApi(config);
-export const impositionSdk = new ImpositionApi(config);
+  getCatalog(cursor?: number, limit?: number) {
+    let path = "/catalog";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getPrinters(cursor?: number, limit?: number) {
+    let path = "/printer";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getChannels(cursor?: number, limit?: number) {
+    let path = "/channel";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getDesigns(cursor?: number, limit?: number) {
+    let path = "/design";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getImposition(cursor?: number, limit?: number) {
+    let path = "/imposition";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getPersonalizationCategories(cursor?: number, limit?: number) {
+    let path = "/personalize/category";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getJobs(cursor?: number, limit?: number) {
+    let path = "/job";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getListing(cursor?: number, limit?: number) {
+    let path = "/listing";
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+}
+
+const api = new Art2CartApi();
+
+export default api;

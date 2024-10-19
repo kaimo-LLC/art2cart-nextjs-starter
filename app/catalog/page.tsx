@@ -1,4 +1,4 @@
-import { catalogSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await catalogSdk.getAllCatalogProducts(cursor, limit);
+  const data = await api.getCatalog(cursor, limit);
   if (!data) {
     return [];
   }

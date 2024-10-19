@@ -1,5 +1,5 @@
 "use client";
-import { designSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import { useQuery } from "@tanstack/react-query";
 import { Design } from "art2cart";
 import { useWizardStore } from "../../providers/useWizardStore";
@@ -10,7 +10,10 @@ export function useDesigns({ designs }: { designs: Design[] }) {
 
   const { data } = useQuery({
     queryKey: ["designs"],
-    queryFn: () => designSdk.getAllDesigns(0, 10).then((res) => res.data),
+    queryFn: () =>
+      api.getDesigns(0, 10).then((data) => {
+        return data;
+      }),
     initialData: designs,
     retry: 0,
     refetchInterval: 1000,

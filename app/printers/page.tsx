@@ -1,4 +1,4 @@
-import { printerSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import {
   Table,
   TableBody,
@@ -8,8 +8,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TitleCard } from "@/components/TitleCard";
 import { Printer } from "art2cart";
+import { TitleCard } from "@/components/TitleCard";
 
 async function fetchData({
   cursor,
@@ -18,7 +18,7 @@ async function fetchData({
   cursor?: number;
   limit?: number;
 }) {
-  const { data } = await printerSdk.getAllPrinters(cursor, limit);
+  const data = await api.getPrinters(cursor, limit);
   if (!data) {
     return [];
   }

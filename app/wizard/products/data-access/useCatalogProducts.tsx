@@ -1,5 +1,5 @@
 "use client";
-import { catalogSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import { useQuery } from "@tanstack/react-query";
 import { CatalogProduct } from "art2cart";
 import { useWizardStore } from "../../providers/useWizardStore";
@@ -13,7 +13,9 @@ export function useCatalogProducts({
   const { data } = useQuery({
     queryKey: ["designs"],
     queryFn: () =>
-      catalogSdk.getAllCatalogProducts(0, 10).then((res) => res.data),
+      api.getCatalog(0, 10).then((data) => {
+        return data;
+      }),
     initialData: products,
     retry: 0,
     refetchInterval: 1000,

@@ -1,5 +1,5 @@
 "use client";
-import { channelSdk } from "@/lib/art2cart";
+import api from "@/lib/art2cart";
 import { useQuery } from "@tanstack/react-query";
 import { Channel } from "art2cart";
 import { useWizardStore } from "../../providers/useWizardStore";
@@ -10,7 +10,10 @@ export function useChannels({ channels }: { channels: Channel[] }) {
 
   const { data } = useQuery({
     queryKey: ["channels"],
-    queryFn: () => channelSdk.getAllChannels(0, 10).then((res) => res.data),
+    queryFn: () =>
+      api.getChannels(0, 10).then((data) => {
+        return data;
+      }),
     initialData: channels,
     retry: 0,
     refetchInterval: 1000,
