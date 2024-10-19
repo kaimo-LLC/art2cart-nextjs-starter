@@ -13,7 +13,7 @@ export function useCatalogProducts({
   const { data } = useQuery({
     queryKey: ["designs"],
     queryFn: () =>
-      api.getCatalog(0, 10).then((data) => {
+      api.getCatalog(0, 100).then((data) => {
         return data;
       }),
     initialData: products,

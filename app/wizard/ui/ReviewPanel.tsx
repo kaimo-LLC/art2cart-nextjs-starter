@@ -18,6 +18,8 @@ export function ReviewPanel() {
     listing,
     selectedDesigns,
     selectedProducts,
+    selectedChannels,
+    selectedPersonalizationItems,
     resetConfig,
     clearListing,
   } = useWizardStore();
@@ -54,6 +56,11 @@ export function ReviewPanel() {
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Personalizations</p>
+                <pre className="rounded-lg border bg-card text-card-foreground p-4">
+                  <code>
+                    {JSON.stringify(selectedPersonalizationItems, null, 2)}
+                  </code>
+                </pre>
               </div>
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Listing Details</p>
@@ -64,7 +71,7 @@ export function ReviewPanel() {
               <div className="grid grid-cols-1 items-center gap-4">
                 <p>Channels</p>
                 <pre className="rounded-lg border bg-card text-card-foreground p-4">
-                  <code></code>
+                  <code>{JSON.stringify(selectedChannels, null, 2)}</code>
                 </pre>
               </div>
             </div>

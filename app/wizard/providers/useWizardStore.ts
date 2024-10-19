@@ -5,6 +5,8 @@ import {
   ListingSlice,
   createCatalogProductSlice,
   CatalogProductsSlice,
+  createPersonalizationCategorySlice,
+  PersonalizationCategorySlice,
   createDesignsSlice,
   DesignsSlice,
   createChannelSlice,
@@ -15,6 +17,7 @@ import {
 
 export type WizardStore = ListingSlice &
   CatalogProductsSlice &
+  PersonalizationCategorySlice &
   DesignsSlice &
   ChannelSlice &
   ConfigSlice;
@@ -24,6 +27,7 @@ export const useWizardStore = create<WizardStore>()(
     (...a) => ({
       ...createListingSlice(...a),
       ...createCatalogProductSlice(...a),
+      ...createPersonalizationCategorySlice(...a),
       ...createDesignsSlice(...a),
       ...createChannelSlice(...a),
       ...createConfigSlice(...a),

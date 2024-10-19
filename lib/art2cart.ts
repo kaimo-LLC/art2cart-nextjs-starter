@@ -141,6 +141,36 @@ class Art2CartApi {
       });
   }
 
+  getPersonalizationItemsByCategory(
+    category?: string,
+    cursor?: number,
+    limit?: number
+  ) {
+    if (!category) {
+      return [];
+    }
+    let path = `/personalize/category/${category}/items`;
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    console.log("path", path);
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
   getJobs(cursor?: number, limit?: number) {
     let path = "/job";
     if (cursor || limit) {

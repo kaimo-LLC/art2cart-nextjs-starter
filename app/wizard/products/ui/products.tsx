@@ -21,6 +21,7 @@ export function Products({ products }: { products: CatalogProduct[] }) {
       <TableCaption>A list of catalog products</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead>id</TableHead>
           <TableHead>Code</TableHead>
           <TableHead>Category</TableHead>
           <TableHead>Model</TableHead>
@@ -30,6 +31,7 @@ export function Products({ products }: { products: CatalogProduct[] }) {
       <TableBody>
         {productOptions.map((product: CatalogProduct) => (
           <TableRow key={product.id}>
+            <TableCell>{product.id}</TableCell>
             <TableCell>{product.code}</TableCell>
             <TableCell>{product.category}</TableCell>
             <TableCell>{product.model}</TableCell>
