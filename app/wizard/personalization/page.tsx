@@ -4,8 +4,8 @@ import { WizardNav } from "../ui/WizardNav";
 import { ReviewPanel } from "../ui/ReviewPanel";
 import { BodyCard } from "@/components/BodyCard";
 import { PersonalizationCategory, PersonalizationItem } from "art2cart";
-import { Categories } from "./ui/categories";
-import { Items } from "./ui/items";
+import { CategorySelector } from "./ui/CategorySelector";
+import { ItemSelector } from "./ui/ItemSelector";
 
 async function fetchCategoryData({
   cursor,
@@ -47,11 +47,26 @@ async function fetchItemData({
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: { category: string };
+  searchParams?: { category: string; item: string };
 }) {
-  console.log(searchParams?.category);
-  const categories = await fetchCategoryData({ cursor: 0, limit: 10 });
-  const items = await fetchItemData({ category: searchParams?.category });
+  const categories = await fetchCategoryData({ cursor: 0, limit: 20 });
+  const items = await fetchItemData({
+    category: searchParams?.category,
+    cursor: 0,
+    limit: 20,
+  });
+
+  const categoryList = categories.map(function (category) {
+    return {
+      value: `${category.id}`,
+      label: category.name,
+    };
+  });
+
+  const itemList = items.map(function (item) {
+    return { value: `${item.id}`, label: item.name };
+  });
+
   return (
     <div className="mx-auto max-w-7xl p-4 lg:p-16">
       <TitleCard
@@ -65,8 +80,15 @@ export default async function Page({
           title="Personalization"
           description="Select personalization data"
         >
-          {!searchParams?.category && <Categories categories={categories} />}
-          {searchParams?.category && <Items items={items} />}
+          <div className="grid grid-cols-3 gap-4">
+            <CategorySelector
+              categories={categoryList}
+              selectedCategory={searchParams?.category || ""}
+            />
+            <div className="col-span-2">
+              <ItemSelector items={itemList} />
+            </div>
+          </div>
         </BodyCard>
       </div>
       <div className="flex justify-end my-8">

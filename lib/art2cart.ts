@@ -159,7 +159,64 @@ class Art2CartApi {
     if (limit) {
       path += `limit=${limit}`;
     }
-    console.log("path", path);
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getAllPersonalizationReferencedItems(
+    items?: string,
+    cursor?: number,
+    limit?: number
+  ) {
+    if (!items) {
+      return [];
+    }
+    let path = `/personalize/item/referenced?items=${items}`;
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
+    return this.api
+      .get(path)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.log("error", error);
+        return [];
+      });
+  }
+
+  getAllPersonalizationItemsByItemId(
+    item?: string,
+    cursor?: number,
+    limit?: number
+  ) {
+    if (!item) {
+      return [];
+    }
+    let path = `/personalize/item/${item}/items`;
+    if (cursor || limit) {
+      path += "?";
+    }
+    if (cursor) {
+      path += `cursor=${cursor}`;
+    }
+    if (limit) {
+      path += `limit=${limit}`;
+    }
     return this.api
       .get(path)
       .then((res) => {
